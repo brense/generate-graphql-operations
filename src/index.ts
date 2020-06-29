@@ -16,12 +16,16 @@ const { path, url, file } = yargs.options({
   url: { type: 'string' },
   file: { type: 'string' }
 }).check((argv, options) => {
-  return true
+  if (!argv.file && !argv.url) {
+    throw new Error('You must pass either an url or a file!')
+  } else {
+    return true
+  }
 }).argv;
 
 (async () => {
   // load schema
-  const schema = await loadSchema(url || file, {
+  const schema = await loadSchema(url || file || '', {
     loaders: [
       new UrlLoader(),
       new JsonFileLoader(),
