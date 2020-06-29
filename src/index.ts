@@ -7,8 +7,8 @@ import { JsonFileLoader } from '@graphql-tools/json-file-loader'
 import { GraphQLFileLoader } from '@graphql-tools/graphql-file-loader'
 import { loadSchema } from '@graphql-tools/load'
 import * as fs from 'fs'
-import * as rimraf from 'rimraf'
 import * as yargs from 'yargs'
+import { resolve as pathResolve } from 'path'
 
 // yargs command options config
 const { path, url, file } = yargs.options({
@@ -30,8 +30,7 @@ const { path, url, file } = yargs.options({
   })
 
   // clean dir
-  rimraf.sync(path)
-  fs.mkdirSync(path)
+  cleanDir(pathResolve(path))
 
   // get operations fields
   const mutations = schema.getMutationType()?.getFields()
@@ -48,7 +47,7 @@ const { path, url, file } = yargs.options({
 
 async function generateFilesForFields(schema: GraphQLSchema, obj: GraphQLFieldMap<any, any>, kind: 'query' | 'mutation' | 'subscription') {
   const promisses: Array<Promise<{ field: string, file: string }>> = []
-  const opsPath = `${path}/${kind === 'query' ? 'queries' : kind === 'mutation' ? 'mutations' : 'subscriptions'}`
+  const opsPath = `${pathResolve(path)}/${kind === 'query' ? 'queries' : kind === 'mutation' ? 'mutations' : 'subscriptions'}`
 
   // create operations directory if it doesnt exit
   if (!fs.existsSync(opsPath)) {
@@ -67,6 +66,24 @@ async function generateFilesForFields(schema: GraphQLSchema, obj: GraphQLFieldMa
 
   // create import file for operations
   const files = await Promise.all(promisses)
-  const lines = files.map(({ field, file }) => `export const ${field} = loader('${file.replace(path, '.')}')`).join(`\r\n`)
+  const lines = files.map(({ field, file }) => `export const ${field} = loader('${file.replace(opsPath, '.')}')`).join(`\r\n`)
   fs.writeFileSync(`${opsPath}/index.ts`, `import { loader } from 'graphql.macro'\r\n${lines}`)
+}
+
+function cleanDir(dirPath: string, removeSelf = false) {
+  if (fs.existsSync(dirPath)) {
+    try { var files = fs.readdirSync(dirPath) }
+    catch (e) { return }
+    if (files.length > 0)
+      for (var i = 0; i < files.length; i++) {
+        var filePath = dirPath + '/' + files[i]
+        if (fs.statSync(filePath).isFile())
+          fs.unlinkSync(filePath)
+        else
+          cleanDir(filePath, true)
+      }
+    removeSelf && fs.rmdirSync(dirPath)
+  } else {
+    fs.mkdirSync(dirPath)
+  }
 }
