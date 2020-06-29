@@ -1,0 +1,36 @@
+{
+  "name": "generate-graphql-operations",
+  "version": "0.0.1",
+  "description": "Genereate graphql queries, mutations and subscriptions based on a schema",
+  "main": "./lib-esm/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/brense/generate-graphql-operations.git"
+  },
+  "author": "Rense Bakker",
+  "license": "MIT",
+  "bin": {
+    "generate-gql-ops": "./lib-esm/index.js"
+  },
+  "bugs": {
+    "url": "https://github.com/brense/generate-graphql-operations/issues"
+  },
+  "homepage": "https://github.com/brense/generate-graphql-operations#readme",
+  "dependencies": {
+    "@graphql-tools/graphql-file-loader": "^6.0.11",
+    "@graphql-tools/json-file-loader": "^6.0.11",
+    "@graphql-tools/load": "^6.0.11",
+    "@graphql-tools/url-loader": "^6.0.11",
+    "@graphql-tools/utils": "^6.0.11",
+    "graphql": "^15.1.0",
+    "rimraf": "^3.0.2",
+    "yargs": "^15.3.1"
+  },
+  "devDependencies": {
+    "@types/yargs": "^15.0.5",
+    "typescript": "^3.9.5"
+  }
+}
