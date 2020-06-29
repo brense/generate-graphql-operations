@@ -1,6 +1,6 @@
 {
   "name": "generate-graphql-operations",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "Genereate graphql queries, mutations and subscriptions based on a schema",
   "main": "./lib-esm/index.js",
   "scripts": {
