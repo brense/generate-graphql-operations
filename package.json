@@ -2,7 +2,11 @@
   "name": "generate-graphql-operations",
   "version": "0.0.4",
   "description": "Genereate graphql queries, mutations and subscriptions based on a schema",
-  "keywords": ["graphql", "generate", "queries"],
+  "keywords": [
+    "graphql",
+    "generate",
+    "queries"
+  ],
   "main": "./lib-esm/index.js",
   "scripts": {
     "prepublishOnly": "tsc --p tsconfig-npm.json",
@@ -23,16 +27,16 @@
   },
   "homepage": "https://github.com/brense/generate-graphql-operations#readme",
   "dependencies": {
-    "@graphql-tools/graphql-file-loader": "^6.0.11",
-    "@graphql-tools/json-file-loader": "^6.0.11",
-    "@graphql-tools/load": "^6.0.11",
-    "@graphql-tools/url-loader": "^6.0.11",
-    "@graphql-tools/utils": "^6.0.11",
-    "graphql": "^15.1.0",
-    "yargs": "^15.3.1"
+    "@graphql-tools/graphql-file-loader": "^6.2.5",
+    "@graphql-tools/json-file-loader": "^6.2.5",
+    "@graphql-tools/load": "^6.2.5",
+    "@graphql-tools/url-loader": "^6.4.0",
+    "@graphql-tools/utils": "^6.2.4",
+    "graphql": "^15.4.0",
+    "yargs": "^15.4.1"
   },
   "devDependencies": {
-    "@types/yargs": "^15.0.5",
-    "typescript": "^3.9.5"
+    "@types/yargs": "^15.0.9",
+    "typescript": "^3.9.7"
   }
 }
