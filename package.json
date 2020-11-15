@@ -1,6 +1,6 @@
 {
   "name": "generate-graphql-operations",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Genereate graphql queries, mutations and subscriptions based on a schema",
   "keywords": [
     "graphql",
