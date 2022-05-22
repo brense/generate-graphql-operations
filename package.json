@@ -27,15 +27,16 @@
   },
   "homepage": "https://github.com/brense/generate-graphql-operations#readme",
   "dependencies": {
-    "@graphql-tools/graphql-file-loader": "^6.2.5",
-    "@graphql-tools/json-file-loader": "^6.2.5",
-    "@graphql-tools/load": "^6.2.5",
-    "@graphql-tools/url-loader": "^7.9.0",
+    "@graphql-tools/graphql-file-loader": "^7.3.14",
+    "@graphql-tools/json-file-loader": "^7.3.14",
+    "@graphql-tools/load": "^7.5.13",
+    "@graphql-tools/url-loader": "^7.9.23",
     "@graphql-tools/utils": "^6.2.4",
     "graphql": "^15.4.0",
     "yargs": "^15.4.1"
   },
   "devDependencies": {
+    "@types/node": "^17.0.35",
     "@types/yargs": "^15.0.9",
     "typescript": "^3.9.7"
   }
